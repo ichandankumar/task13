@@ -6,15 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form onsubmit="savelocal(event)"
+    <form onsubmit="savelocal(event)">
     <label>Name</label>
-    <input type="text" name="username" required/>
+    <input type="text" name="username" id=usernameInputTag" required/>
     <label>Email</label>
-    <input type="email" name="emailId" required/>
+    <input type="email" name="emailId" id="emailInputTag" required/>
     <label>Phone no</label>
-    <input type="tel" name="phonenumber" required/>
+    <input type="tel" name="phonenumber" id=phonenumberInputTag" required/>
     <button> Submit </button>
-    <input type="button" v="delete">
 </form>
 <ul id='listofitems'></ul>
 <script>
@@ -44,11 +43,24 @@
    deleteButton.oneclick = () => {
     localStorage.removeItem(obj.email)
     parentElem.removeChild(childElement)
-   }
+   
    childElement.appendChild(deleteButton)
    parentElem.appendChild(childElement)
-
-   }
+}
+const editButton= document.createElement('input')
+editButton.type = "button"
+editButton.value = 'Edit'
+editButton.onclick = () => {
+    localStorage.removeItem(obj.email)
+    parentElem.removeChild(childElement)
+    document.getElementById('usernameInputTag').value= obj.name
+    document.getElementById('emailInputTag').value= obj.email
+    document.getElementById('phonepumberInputTag').value= obj.phonenumber
+}
+childElement.appendChild(deleteButton)
+childElement.appendChild(editButton)
+childElement.appendChild(childElement)
+}
 </script>
     </body>
 </body>
